@@ -1,0 +1,10 @@
+---
+applications:
+- name: trendy-life-product-service
+  path: target/trendy-life-product-service.jar
+  memory: 1G
+  instances: 1
+  routes:
+  - route: trendy-life-product-service.cfapps.io
+  services:
+  - productDB
