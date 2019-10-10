@@ -21,21 +21,21 @@ import com.henry.product.service.ProductService;
 @Service
 @Path("/products")
 public class ProductEndpoint {
-	
-	@Autowired
-	private ProductService productService;
-	
-	@GET
+
+    @Autowired
+    private ProductService productService;
+
+    @GET
     @Produces("application/json")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
-	
-	@POST
-	@Consumes("application/json")
+
+    @POST
+    @Consumes("application/json")
     public Response addProduct(Product prod, @Context UriInfo uriInfo) {
-		final Long prodId = productService.addProduct(prod);		
-		final URI uri = uriInfo.getAbsolutePathBuilder().path(prodId.toString()).build();
+        final Long prodId = productService.addProduct(prod);
+        final URI uri = uriInfo.getAbsolutePathBuilder().path(prodId.toString()).build();
         return Response.created(uri).build();
     }
 }

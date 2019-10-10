@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +20,8 @@ import lombok.ToString;
 @XmlRootElement(name = "product")
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(staticName="of")
+@EqualsAndHashCode
 public class Product implements Serializable {
 	private static final long serialVersionUID = 8177242098808853897L;
 	

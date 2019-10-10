@@ -8,18 +8,30 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NonNull;
 
 @Entity
-@Data
-@Table(name="TBL_PRODUCTS")
+@Data(staticConstructor = "of")
+@Table(name = "TBL_PRODUCTS")
 public class ProductEntity {
-	@Id
+    @Id
     @GeneratedValue
+    @NonNull
     private Long id;
+
+    @NonNull
     private String sku;
+
+    @NonNull
     private String title;
+
+    @NonNull
     private String description;
+
+    @NonNull
     private BigDecimal price;
+
     private int installments;
+
     private boolean isFreeShipping;
 }
