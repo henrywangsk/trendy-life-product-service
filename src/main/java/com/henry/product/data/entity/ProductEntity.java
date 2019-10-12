@@ -1,4 +1,4 @@
-package com.henry.product.jpa.entity;
+package com.henry.product.data.entity;
 
 import java.math.BigDecimal;
 
@@ -8,15 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Entity
-@Data(staticConstructor = "of")
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Data
 @Table(name = "TBL_PRODUCTS")
 public class ProductEntity {
     @Id
     @GeneratedValue
-    @NonNull
     private Long id;
 
     @NonNull

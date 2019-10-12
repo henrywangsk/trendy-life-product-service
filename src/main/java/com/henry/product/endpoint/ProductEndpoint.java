@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
 import com.henry.product.dto.Product;
@@ -20,22 +21,22 @@ import com.henry.product.service.ProductService;
 
 @Service
 @Path("/products")
+@Consumes(MediaType.APPLICATION_JSON_VALUE)
+@Produces(MediaType.APPLICATION_JSON_VALUE)
 public class ProductEndpoint {
 
     @Autowired
     private ProductService productService;
 
     @GET
-    @Produces("application/json")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @POST
-    @Consumes("application/json")
     public Response addProduct(Product prod, @Context UriInfo uriInfo) {
-        final Long prodId = productService.addProduct(prod);
-        final URI uri = uriInfo.getAbsolutePathBuilder().path(prodId.toString()).build();
-        return Response.created(uri).build();
+        final Product created = productService.createProduct(prod);
+        final URI uri = uriInfo.getAbsolutePathBuilder().path(created.getId().toString()).build();
+        return Response.created(uri).entity(created).build();
     }
 }

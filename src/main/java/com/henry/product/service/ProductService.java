@@ -5,7 +5,7 @@ import java.util.List;
 import com.henry.product.dto.Product;
 
 public interface ProductService {
-	List<Product> getAllProducts();
+    List<Product> getAllProducts();
 
-	Long addProduct(Product prod);
+    Product createProduct(Product prod);
 }
